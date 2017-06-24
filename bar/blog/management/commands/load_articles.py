@@ -27,6 +27,8 @@ class Command(BaseCommand):
             created_at=article_data['created_at'],
             author=author)
         article.save()
+        tags = []
         for tag in article_data['tags']:
             tag_instance, _ = Tag.objects.get_or_create(name=tag)
-            article.tags.add(tag_instance)
+            tags.append(tag_instance)
+        article.tags.add(*tags)
