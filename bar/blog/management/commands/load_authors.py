@@ -16,12 +16,14 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         with open(self.DATA_FILE_PATH, 'r') as json_file:
             data = json.loads(json_file.read())
+        author_instances = []
         for author in data:
-            self._import_author(author)
+            author_instances.append(self._import_author(author))
+        Author.objects.bulk_create(author_instances)
 
     def _import_author(self, author_data):
         author = Author(
             username=author_data['username'],
             email=author_data['email'],
             bio=author_data['bio'])
-        author.save()
+        return author
