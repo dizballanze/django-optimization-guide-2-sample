@@ -26,6 +26,7 @@ class Article(models.Model):
     created_at = models.DateField()
     author = models.ForeignKey(Author)
     tags = models.ManyToManyField(Tag)
+    comments_on = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
