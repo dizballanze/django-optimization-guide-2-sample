@@ -9,7 +9,7 @@
 <article>
     <h2>{{ article.title }}</h2>
     <time>{{ article.created_at }}</time>
-    <p>Author: {{ article.author.username }}</p>
+    <p>Author: <a href="{% url 'author_page' username=article.author.username %}">{{ article.author.username }}</a></p>
     <p>Tags:
     {% for tag in article.tags.all %}
         {{ tag }}{% if not forloop.last %}, {% endif %}

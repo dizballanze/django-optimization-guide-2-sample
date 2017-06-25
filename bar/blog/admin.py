@@ -1,6 +1,6 @@
 from django.contrib import admin, messages
 
-from blog.models import Article
+from blog.models import Article, Author
 
 
 def clone_article(modeladmin, request, queryset):
@@ -27,3 +27,4 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(Author)
