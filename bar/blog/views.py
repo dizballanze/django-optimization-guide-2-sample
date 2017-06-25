@@ -9,4 +9,4 @@ class ArticlesListView(ListView):
     model = Article
     context_object_name = 'articles'
     paginate_by = 20
-    queryset = Article.objects.select_related('author')
+    queryset = Article.objects.select_related('author').prefetch_related('tags')
