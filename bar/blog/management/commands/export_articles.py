@@ -18,5 +18,5 @@ class Command(BaseCommand):
         with open(self.EXPORT_FILE_PATH, 'w') as export_file:
             articles_writer = csv.writer(export_file, delimiter=';')
             articles_writer.writerow(self.COLUMNS)
-            for article in Article.objects.select_related('author'):
+            for article in Article.objects.select_related('author').iterator():
                 articles_writer.writerow([getattr(article, column) for column in self.COLUMNS])
