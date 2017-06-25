@@ -11,7 +11,7 @@ class Tag(models.Model):
 
 class Author(models.Model):
 
-    username = models.CharField(max_length=64)
+    username = models.CharField(max_length=64, db_index=True)
     email = models.EmailField()
     bio = models.TextField()
 
