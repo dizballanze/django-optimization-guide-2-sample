@@ -15,7 +15,7 @@ class ArticlesListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['authors_count'] = len(Author.objects.all())
+        context['authors_count'] = Author.objects.count()
         return context
 
 
