@@ -16,4 +16,7 @@ class ArticlesListView(ListView):
 
 def author_page_view(request, username):
     author = get_object_or_404(Author, username=username)
-    return render(request, 'blog/author.html', context=dict(author=author))
+    show_articles_link = (author.articles.count() > 0)
+    return render(
+        request, 'blog/author.html',
+        context=dict(author=author, show_articles_link=show_articles_link))

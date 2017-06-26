@@ -24,7 +24,7 @@ class Article(models.Model):
     title = models.CharField(max_length=64)
     content = models.TextField()
     created_at = models.DateField()
-    author = models.ForeignKey(Author)
+    author = models.ForeignKey(Author, related_name='articles')
     tags = models.ManyToManyField(Tag)
     comments_on = models.BooleanField(default=True)
 
