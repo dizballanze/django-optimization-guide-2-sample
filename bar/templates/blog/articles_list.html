@@ -5,6 +5,8 @@
 {% block content %}
 <h1>Articles list</h1>
 
+<p>Authors count: {{ authors_count }}</p>
+
 {% for article in articles %}
 <article>
     <h2>{{ article.title }}</h2>

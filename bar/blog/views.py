@@ -13,6 +13,11 @@ class ArticlesListView(ListView):
     queryset = Article.objects.select_related('author').prefetch_related('tags').only(
         'title', 'created_at', 'author__username', 'tags__name')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['authors_count'] = len(Author.objects.all())
+        return context
+
 
 def author_page_view(request, username):
     author = get_object_or_404(Author, username=username)
