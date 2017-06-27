@@ -1,5 +1,6 @@
 from django.views.generic import ListView
 from django.shortcuts import get_object_or_404, render
+from django.db.models import Count
 
 from blog.models import Article, Author
 
@@ -16,6 +17,8 @@ class ArticlesListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['authors_count'] = Author.objects.count()
+        context['top_authors'] = list(
+            Author.objects.order_by('-articles_count'))[:20]
         return context
 
 

@@ -7,6 +7,14 @@
 
 <p>Authors count: {{ authors_count }}</p>
 
+<h2>Top authors</h2>
+
+<ul>
+    {% for author in top_authors %}
+    <li>{{ author.username }} ({{ author.articles_count }})</li>
+    {% endfor %}
+</ul>
+
 {% for article in articles %}
 <article>
     <h2>{{ article.title }}</h2>

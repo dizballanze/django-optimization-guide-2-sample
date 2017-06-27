@@ -14,6 +14,7 @@ class Author(models.Model):
     username = models.CharField(max_length=64, db_index=True)
     email = models.EmailField()
     bio = models.TextField()
+    articles_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.username
