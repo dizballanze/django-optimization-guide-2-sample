@@ -17,8 +17,8 @@ class ArticlesListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['authors_count'] = Author.objects.count()
-        context['top_authors'] = list(
-            Author.objects.order_by('-articles_count'))[:20]
+        context['top_authors'] =\
+            Author.objects.order_by('-articles_count')[:20]
         return context
 
 
